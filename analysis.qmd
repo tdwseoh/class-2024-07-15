@@ -1,0 +1,39 @@
+---
+title: "Untitled"
+format: html
+---
+
+Does race or gender impact your economic success in the U.S.?
+
+Do more stereotypical Caucasian names have a higher chance of getting callbacks?
+
+Do more stereotypical male names have a higher chance of getting callbacks?
+
+Would the date of these data recorded have altered the results due to real-world events connections? (e.g. Pre/Post BLM)
+
+
+1st Column: Name
+2nd Column: Callback (0/1)
+
+Specific Question: black versus white callbacks
+
+Preceptor Table:
+  Units: individuals
+  Outcomes: call-back if white (name), call-back if black (name)
+  Causal/predictive: Causal
+  Covarities: race, gender, zip code
+  Treatment: black name on resume versus white name on resume
+
+```{r}
+library(dplyr)
+
+file_path <- "data/resume.csv"
+data <- read.csv(file_path)
+
+# Organize the dataset
+organized_data <- data %>%
+  select(name = firstname, callback_status = call)
+
+print(organized_data)
+```
+
