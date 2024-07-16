@@ -3,23 +3,28 @@ title: "Untitled"
 format: html
 ---
 
-## Quarto
+Does race or gender impact your economic success in the U.S.?
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Do more stereotypical Caucasian names have a higher chance of getting callbacks?
 
-## Running Code
+Do more stereotypical male names have a higher chance of getting callbacks?
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Would the date of these data recorded have altered the results due to real-world events connections? (e.g. Pre/Post BLM)
 
-```{r}
-1 + 1
-```
 
-You can add options to executable code like this 
+1st Column: Name
+2nd Column: Callback (0/1)
 
 ```{r}
-#| echo: false
-2 * 2
+library(dplyr)
+
+file_path <- "data/resume.csv"
+data <- read.csv(file_path)
+
+# Organize the dataset
+organized_data <- data %>%
+  select(name = firstname, callback_status = call)
+
+print(organized_data)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
